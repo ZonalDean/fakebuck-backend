@@ -1,5 +1,9 @@
 const { sequelize } = require('./models')
 
-const forceDB = () => {
-    sequelize.sync({ force: true })
+exports.forceDB = (arming) => {
+    if (arming === 'armed') {
+        sequelize.sync({ force: true })
+    } else {
+        console.log(`Need to arm for force sync`)
+    }
 }

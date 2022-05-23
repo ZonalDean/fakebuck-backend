@@ -9,7 +9,7 @@ const errorMiddleware = require('./middlwares/Error');
 
 const app = express();
 app.use(cors());
-if (process.env.NODE_ENV === 'DEVELOPMENT') {
+if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 app.use(express.json());

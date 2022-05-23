@@ -14,5 +14,30 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
 
+    Friend.associate = models => {
+
+        // REQUEST TO
+        Friend.belongsTo(models.User, {
+            as: 'RequestFrom',
+            foreignKey: {
+                name: 'requestFromId',
+                allowNull: false,
+            },
+            onUpdate: 'RESTRICT',
+            onDelete: 'RESTRICT'
+        });
+
+        // REQUEST FROM
+        Friend.belongsTo(models.User, {
+            as: 'RequestTo',
+            foreignKey: {
+                name: 'requestToId',
+                allowNull: false,
+            },
+            onUpdate: 'RESTRICT',
+            onDelete: 'RESTRICT'
+        });
+    }
+
     return Friend
 }

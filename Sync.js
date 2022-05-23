@@ -1,9 +1,11 @@
 const { sequelize } = require('./models')
 
-exports.forceDB = (arming) => {
-    if (arming === 'armed') {
+exports.modDB = (arming) => {
+    if (arming === 'force') {
         sequelize.sync({ force: true })
+    } if (arming === 'alter') {
+        sequelize.sync({ alter: true })
     } else {
-        console.log(`Need to arm for force sync`)
+        console.log(`'force' to force sync, 'alter' to alter sync`)
     }
 }

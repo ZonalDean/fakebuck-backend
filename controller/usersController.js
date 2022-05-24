@@ -1,15 +1,14 @@
-const { User } = require('../models')
+const { User, Friend } = require('../models')
 const createError = require("../utils/createError");
 
-exports.me = async (req, res, next) => {
-    try {
-        // CHECK AUTH
+exports.getMe = async (req, res) => {
 
-        // FIND USER & GET USER DATA
+    // SEND USER FROM "Authenticate" MIDDLEWARE
+    const user = req.user
+    res.json({ user: user })
 
-        // FIND FRIENDS & GET DATA
+    // FIND USER & GET USER DATA
 
-    } catch {error} {
-        next(error)
-    }
+    // FIND FRIENDS & GET DATA
+
 }

@@ -6,8 +6,7 @@ const { User } = require('../models')
 const { Op } = require('sequelize')
 
 // GEN TOKEN FUNCTION
-
-const genToken = (payload) => jwt.sign(payload, process.env.JWT_SECRET_TOKEN, {expiresIn: process.env.JWT_EXPIRES_IN})
+const genToken = (payload) => jwt.sign(payload, process.env.JWT_SECRET_KEY, {expiresIn: process.env.JWT_EXPIRES_IN})
 
 exports.login = async (req, res, next) => {
     try {

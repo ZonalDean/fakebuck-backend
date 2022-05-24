@@ -9,5 +9,6 @@ module.exports = (err, req, res, next) => {
       message: err.message,
       name: err.name,
     });
+    console.log(err)
   };
   

@@ -8,10 +8,14 @@ const morgan = require('morgan')
 const notFoundMiddleware = require('./middlwares/NotFound');
 const errorMiddleware = require('./middlwares/Error');
 const { modDB } = require('./Sync');
+const authenticate = require('./middlwares/Authenticate')
 
 // ROUTE IMPORT
 const authRoute = require('./routes/authRoute')
+const meRoute = require('./routes/usersRoute')
+const friendRoute = require('./routes/friendRoute')
 
+// BASICS
 const app = express();
 app.use(cors());
 if (process.env.NODE_ENV === 'development') {
@@ -22,6 +26,8 @@ app.use(express.urlencoded({ extended: false }));
 
 //ROUTE 
 app.use('/auth', authRoute)
+app.use('/users', authenticate, meRoute)
+app.use('/friends', authenticate, friendRoute)
 
 // MIDDLEWARE
 app.use(notFoundMiddleware);

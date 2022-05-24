@@ -9,3 +9,7 @@ exports.modDB = (arming) => {
         console.log(`'force' to force sync, 'alter' to alter sync`)
     }
 }
+
+exports.stringfy = (input) => {
+    console.log(JSON.stringify(input, null, 2))
+}

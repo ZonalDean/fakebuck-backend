@@ -12,7 +12,7 @@ const authenticate = require('./middlwares/Authenticate')
 
 // ROUTE IMPORT
 const authRoute = require('./routes/authRoute')
-const meRoute = require('./routes/usersRoute')
+const userRoute = require('./routes/usersRoute')
 const friendRoute = require('./routes/friendRoute')
 
 // BASICS
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //ROUTE 
 app.use('/auth', authRoute)
-app.use('/users', authenticate, meRoute)
+app.use('/users', authenticate, userRoute)
 app.use('/friends', authenticate, friendRoute)
 
 // MIDDLEWARE

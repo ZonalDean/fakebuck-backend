@@ -3,17 +3,20 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan')
 
+// SHORTCUTS
+const { modDB } = require('./Sync');
 
 // MIDDLEWARE IMPORT
+const authenticate = require('./middlwares/Authenticate')
 const notFoundMiddleware = require('./middlwares/NotFound');
 const errorMiddleware = require('./middlwares/Error');
-const { modDB } = require('./Sync');
-const authenticate = require('./middlwares/Authenticate')
 
 // ROUTE IMPORT
 const authRoute = require('./routes/authRoute')
 const userRoute = require('./routes/usersRoute')
 const friendRoute = require('./routes/friendRoute')
+const postRouter = require('./routes/postRoute');
+
 
 // BASICS
 const app = express();
@@ -28,6 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/auth', authRoute)
 app.use('/users', authenticate, userRoute)
 app.use('/friends', authenticate, friendRoute)
+app.use('/posts', authenticate, postRouter);
+
 
 // MIDDLEWARE
 app.use(notFoundMiddleware);
